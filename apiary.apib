@@ -19,20 +19,20 @@ Notes related resources of the **Movies Library API**
           "id": 3, "title": "Die Hard"
         }]
 
-### Create a Note [POST]
+### Create a Movie [POST]
 + Request (application/json)
 
-        { "title": "Buy cheese and bread for breakfast." }
+        { "title": "Taxi Driver" }
 
 + Response 201 (application/json)
 
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+        { "id": 4, "title": "Taxi Driver" }
 
-## Note [/notes/{id}]
-A single Note object with all its details
+## Note [/movies/{id}]
+A single Movie object with all its details
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+    + id (required, number, `1`) ... Numeric `id` of the Movie to perform action with. Has example value.
 
 ### Retrieve a Note [GET]
 + Response 200 (application/json)
@@ -43,7 +43,7 @@ A single Note object with all its details
 
     + Body
 
-            { "id": 2, "title": "Pick-up posters from post-office" }
+            { "id": 1, "title": "Forrest Gump" }
 
 ### Remove a Note [DELETE]
 + Response 204
