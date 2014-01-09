@@ -1,49 +1,111 @@
 FORMAT: 1A
-HOST: htttp://MoviesLibrary.com
+HOST: http://MoviesLibrary.com
 
-# library
-Notes API is a *Movies library* service similar to its physical paper presence on your table.
+# Movies library
+Movies API is a *Movies library* 
 
-# Group Notes
-Notes related resources of the **Movies Library API**
+# Group Movies
+Movies related resources of the **Movies Library API**
 
-## Movies Collection [/book]
+## Movies Collection [/movie] 
+
++ Model (application/json)
+
+    JSON representation of Movie Resource
+
+    + Body
+    
+            [ {
+                "id": 1,
+                "title": "The God Father 1",
+                "director": {
+                    "id": "1",
+                    "name": "Francis Ford Coppola"
+                }
+              }, {
+                "id": 2,
+                "title": "Star Wars",
+                "director": {
+                    "id": "2",
+                    "name": "Ridley Scott"
+                }
+              }, {
+                "id": 3,
+                "title": "Die Hard",
+                "director": {
+                    "id": "3",
+                    "name": "John McTiernan"
+                
+                }
+              }
+            ]
+
 ### List all Movies [GET]
+Get a list of all the movies in your library
+
 + Response 200 (application/json)
+    [Movies Collection][]
 
-        [{
-          "id": 1, "title": "The God Father 1"
-        }, {
-          "id": 2, "title": "Gladiator"
-        }, {
-          "id": 3, "title": "Die Hard"
-        }]
-
-### Create a Movie [POST]
-+ Request (application/json)
-
-        { "title": "Taxi Driver" }
-
-+ Response 201 (application/json)
-
-        { "id": 4, "title": "Taxi Driver" }
-
-## Note [/movies/{id}]
-A single Movie object with all its details
+## Movie [/movie/{id}]
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the Movie to perform action with. Has example value.
 
-### Retrieve a Note [GET]
-+ Response 200 (application/json)
++ Model (application/json)
 
-    + Header
-
-            X-My-Header: The Value
+    JSON representation of Movie Resource
 
     + Body
 
-            { "id": 1, "title": "Forrest Gump" }
+            {
+                "id": 1,
+                "title": "The God Father 1",
+                "director": {
+                    "id": "1",
+                    "name": "Francis Ford Coppola"
+                }
+            }
+            
+            
+### Retrieve a Single Movie [GET]
+Retrieve a single movie by id
++ Response 200 (application/json)
 
-### Remove a Note [DELETE]
-+ Response 204
+    [Movie][]
+
+## Create a Movie [POST]
+Create a new movie and add it to the movie in your library
++ Request (application/json)
+
+            {
+                "id": 1,
+                "title": "The God Father 1",
+                "director": {
+                    "id": "1"
+                }
+            }
+
++ Response 201 (application/json)
+
+            {
+                "id": 1,
+                "title": "The God Father 1",
+                "director": {
+                    "id": "1",
+                    "name": "Francis Ford Coppola"
+                }
+            }
+
+### Update an existing Movie [PUT]
+updating an existing movie, title field can be changed
+
+The response will hold the updated movie
++ Request 
+
+    [Movie][]
+
++ Response 200 (application/json)
+
+    [Movie][]
+
+
