@@ -10,11 +10,11 @@ Campaign related resources of the **Amplify API**
 ## Campaign Collection [/advertisers/{id}/campaigns] 
 
 + Parameters
-    + advertiserId (required, number, `1`) ...  `id` the id of the advertier
+    + advertiserId (required, number, `1`) ...  the `id` of the advertier
 
 + Model (application/json)
 
-    JSON representation of all campaign associted to {advertiderId}
+    JSON representation of all campaign associted to {id}
 
     + Body
     
@@ -71,49 +71,34 @@ Campaign related resources of the **Amplify API**
             }
 
 ### List all Movies [GET]
-Get a all the campaigns assoicted to a given advertiser. each campaign holds information about it budget
+Get a list of all the campaigns assoicted with advertiser `id`
 
 + Response 200 (application/json)
     [Campaign Collection][]
 
-## Campaign [/campaigns/campaign/{id}]
+## Campaign [/campaigns/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the campaign
+    + id (required, number, `1`) ... the campaign `id` 
 
 + Model (application/json)
 
-    JSON representation of a campaign Resource
+    JSON representation of Movie Resource
 
     + Body
 
             {
-                "id": 1010,
-                "name": "The new product campaign",
-                "enabled": true,
-                "cpc": "0.13",
-                "archived": "false",
-                "amountSpent": "150.00",
-                "minimumCpc": "0.03",
-                "onAirReason": "CAMPAIGN_FLY_DATES_PAST",
-                "campaignOnAir": "false",
-                "budget": {
-                    "id": 1010,
-                    "name": "New product campaign",
-                    "shared": false,
-                    "amount": 1000,
-                    "amountRemaining": "500",
-                    "startDate": "2013-09-16",
-                    "endDate": "2013-11-16",
-                    "runForever": false,
-                    "type": "CAMPAIGN",
-                    "currency": "ILS"
+                "id": 1,
+                "title": "The God Father 1",
+                "director": {
+                    "id": "1",
+                    "name": "Francis Ford Coppola"
                 }
             }
             
             
-### Retrieve a Single Campaign [GET]
-Retrieve a single campaign by id
+### Retrieve a Single Movie [GET]
+Retrieve a single movie by id
 + Response 200 (application/json)
 
     [Campaign][]
@@ -147,10 +132,10 @@ updating an existing movie, title field can be changed
 The response will hold the updated movie
 + Request 
 
-    [Movie][]
+    [Campaign][]
 
 + Response 200 (application/json)
 
-    [Movie][]
+    [Campaign][]
 
 
