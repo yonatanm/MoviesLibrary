@@ -114,12 +114,23 @@ Get a list of all the campaigns assoicted with advertiser `id`
             
 ### Retrieve a Single Campaign [GET]
 Retrieve a single campaign by id
+
 + Response 200 (application/json)
 
     [Campaign][]
 
-### Update an existing Movie [PUT]
-updating an existing campaign
+### Update an Existing Campaign [PUT]
+update an existing campaign by id
+
+the following campaign properties can not be updated, and will be ignored if wil be included within the request body:
+
+* `id`
+* `archived`
+* `amountSpent`
+* `minimumCpc`
+* `onAirReason`
+* `campaignOnAir`
+* `budget` 
 
 The response will hold the updated campaign
 + Request 
@@ -130,4 +141,9 @@ The response will hold the updated campaign
 
     [Campaign][]
 
+
+# Group Ads
+Ads related resources of the **Amplify API**
+
+## Ads Collection [/campaigns/{id}/ads] 
 
