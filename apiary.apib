@@ -7,10 +7,10 @@ Amplify API
 # Group Campaigns
 Campaign related resources of the **Amplify API**
 
-## Campaign Collection [/advertisers/{advertiserId}/campaigns] 
+## Campaign Collection [/advertisers/{id}/campaigns] 
 
 + Parameters
-    + advertiserId (required, number, `1`) ...  `advertiserId` the id of the advertier
+    + advertiserId (required, number, `1`) ...  `id` the id of the advertier
 
 + Model (application/json)
 
@@ -71,37 +71,52 @@ Campaign related resources of the **Amplify API**
             }
 
 ### List all Movies [GET]
-Get a list of all the movies in your library
+Get a all the campaigns assoicted to a given advertiser. each campaign holds information about it budget
 
 + Response 200 (application/json)
     [Campaign Collection][]
 
-## Movie [/movie/{id}]
+## Campaign [/campaigns/campaign/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Movie to perform action with. Has example value.
+    + id (required, number, `1`) ... Numeric `id` of the campaign
 
 + Model (application/json)
 
-    JSON representation of Movie Resource
+    JSON representation of a campaign Resource
 
     + Body
 
             {
-                "id": 1,
-                "title": "The God Father 1",
-                "director": {
-                    "id": "1",
-                    "name": "Francis Ford Coppola"
+                "id": 1010,
+                "name": "The new product campaign",
+                "enabled": true,
+                "cpc": "0.13",
+                "archived": "false",
+                "amountSpent": "150.00",
+                "minimumCpc": "0.03",
+                "onAirReason": "CAMPAIGN_FLY_DATES_PAST",
+                "campaignOnAir": "false",
+                "budget": {
+                    "id": 1010,
+                    "name": "New product campaign",
+                    "shared": false,
+                    "amount": 1000,
+                    "amountRemaining": "500",
+                    "startDate": "2013-09-16",
+                    "endDate": "2013-11-16",
+                    "runForever": false,
+                    "type": "CAMPAIGN",
+                    "currency": "ILS"
                 }
             }
             
             
-### Retrieve a Single Movie [GET]
-Retrieve a single movie by id
+### Retrieve a Single Campaign [GET]
+Retrieve a single campaign by id
 + Response 200 (application/json)
 
-    [Movie][]
+    [Campaign][]
 
 ## Create a Movie [POST]
 Create a new movie and add it to the movie in your library
