@@ -70,7 +70,7 @@ Campaign related resources of the **Amplify API**
               ]
             }
 
-### List all Movies [GET]
+### List all Campaigns [GET]
 Get a list of all the campaigns assoicted with advertiser `id`
 
 + Response 200 (application/json)
@@ -88,48 +88,40 @@ Get a list of all the campaigns assoicted with advertiser `id`
     + Body
 
             {
-                "id": 1,
-                "title": "The God Father 1",
-                "director": {
-                    "id": "1",
-                    "name": "Francis Ford Coppola"
+                "id": 2020,
+                "name": "One more campaign",
+                "enabled": true,
+                "cpc": "0.123",
+                "archived": "false",
+                "amountSpent": "150.00",
+                "minimumCpc": "0.03",
+                "onAirReason": "",
+                "campaignOnAir": "true",
+                "budget": {
+                    "id": 2020,
+                    "name": "Another budget",
+                    "shared": true,
+                    "amount": 2000,
+                    "amountRemaining": "100",
+                    "startDate": "2013-09-16",
+                    "endDate": "",
+                    "runForever": true,
+                    "type": "MONTHLY",
+                    "currency": "USD"
                 }
             }
             
             
-### Retrieve a Single Movie [GET]
-Retrieve a single movie by id
+### Retrieve a Single Campaign [GET]
+Retrieve a single campaign by id
 + Response 200 (application/json)
 
     [Campaign][]
 
-## Create a Movie [POST]
-Create a new movie and add it to the movie in your library
-+ Request (application/json)
-
-            {
-                "id": 1,
-                "title": "The God Father 1",
-                "director": {
-                    "id": "1"
-                }
-            }
-
-+ Response 201 (application/json)
-
-            {
-                "id": 1,
-                "title": "The God Father 1",
-                "director": {
-                    "id": "1",
-                    "name": "Francis Ford Coppola"
-                }
-            }
-
 ### Update an existing Movie [PUT]
-updating an existing movie, title field can be changed
+updating an existing campaign
 
-The response will hold the updated movie
+The response will hold the updated campaign
 + Request 
 
     [Campaign][]
