@@ -11,34 +11,51 @@ Campaign related resources of the **Amplify API**
 
 + Model (application/json)
 
-    JSON representation of Movie Resource
+    JSON representation of all campaign associted to {advertiderId}
 
     + Body
     
-            [ {
-                "id": 1,
-                "title": "The God Father 1",
-                "director": {
-                    "id": "1",
-                    "name": "Francis Ford Coppola"
+            {
+                "count": 2,
+                "campaigns": [
+                {
+                  "id": 1010,
+                  "name": "The new product campaign",
+                  "enabled": true,
+                  "cpc": "0.13",
+                  "budget": {
+                    "id": 1010,
+                    "name": "New product campaign",
+                    "shared": false,
+                    "amount": 1000,
+                    "amountRemaining": "500",
+                    "startDate": "2013-09-16",
+                    "endDate": "2013-11-16",
+                    "runForever": false,
+                    "type": "CAMPAIGN",
+                    "currency": "ILS"
+                  }
+                },
+                {
+                  "id": 2020,
+                  "name": "One more campaign",
+                  "enabled": true,
+                  "cpc": "0.123",
+                  "budget": {
+                    "id": 2020,
+                    "name": "Another budget",
+                    "shared": true,
+                    "amount": 2000,
+                    "amountRemaining": "100",
+                    "startDate": "2013-09-16",
+                    "endDate": "",
+                    "runForever": true,
+                    "type": "MONTHLY",
+                    "currency": "USD"
+                  }
                 }
-              }, {
-                "id": 2,
-                "title": "Star Wars",
-                "director": {
-                    "id": "2",
-                    "name": "Ridley Scott"
-                }
-              }, {
-                "id": 3,
-                "title": "Die Hard",
-                "director": {
-                    "id": "3",
-                    "name": "John McTiernan"
-                
-                }
-              }
-            ]
+              ]
+            }
 
 ### List all Movies [GET]
 Get a list of all the movies in your library
