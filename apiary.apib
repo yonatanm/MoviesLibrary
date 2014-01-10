@@ -73,6 +73,17 @@ Campaign related resources of the **Amplify API**
 ### List all Campaigns [GET]
 Get a list of all the campaigns assoicted with advertiser `id`
 
+| Propery               | Type               | Semantic                           | Example              |
+| :-------------------- | :-----------------:| :---------------------------------:| :------------------: |
+| **count**             | Numeric            | num of campaign for this advertiser| 2                    |
+| **name**              | String,  requiered | name                               | "My Campaign"        |
+| **enabled**           | Boolean, requiered | is capaign ebaled                  | true                 |
+| **cpc**               | Money,   requiered | cost per click                     | "0.58"               |
+| **amountSpent**       | Money,   requiered | Money spent today for **DAILY** budget, this month for **MONTHLY** budget, or from the begining of history for **CAMPAIGN** budget        | "1000.58"               |
+| **minimumCpc**        | Money,   requiered | lower bound cost per click         | "0.03"               |
+| **campaignOnAir**     | Boolean, requiered | is campaign currently on air       | "true"               |
+| **onAirReason**       | String, optional   | 
+
 + Response 200 (application/json)
     [Campaign Collection][]
 
@@ -95,8 +106,8 @@ Get a list of all the campaigns assoicted with advertiser `id`
                 "archived": "false",
                 "amountSpent": "150.00",
                 "minimumCpc": "0.03",
-                "onAirReason": "",
                 "campaignOnAir": "true",
+                "onAirReason": "",
                 "budget": {
                     "id": 2020,
                     "name": "Another budget",
@@ -113,7 +124,8 @@ Get a list of all the campaigns assoicted with advertiser `id`
             
             
 ### Retrieve a Single Campaign [GET]
-Retrieve a single campaign by id
+Retrieve a single campaign by id. a Campaign object also contains  its **Budget** object
+
 
 + Response 200 (application/json)
 
@@ -125,20 +137,23 @@ update an existing campaign by id
 the following campaign properties can not be updated, and will be ignored if wil be included within the request body:
 
 
-| Propery               | Type               | Semantic             | Example              |
-| :-------------------- | :-----------------:| :-------------------:| :------------------: |
-| **id**                | Numeric, requiered | id                   | 1                    |
-| **name**              | String,  requiered | name                 | "My Campaign"        |
-| **enabled**           | Boolean, requiered | is capaign ebaled    | "true"               |
-| **cpc**               | Money,   requiered | cost per click       | "0.58"               |
-| **amountSpent**       | Money,   requiered | Money spent today for `DAILY` budget, this month for `MONTHLY` budget, or from the begining of history for `CAMPAIGN` budget        | "1000.58"               |
- 
+| Propery               | Type               | Semantic                    | Example              |
+| :-------------------- | :-----------------:| :--------------------------:| :------------------: |
+| **name**              | String,  requiered | name                        | "My Campaign"        |
+| **enabled**           | Boolean, requiered | is capaign ebaled           | true                 |
+| **cpc**               | Money,   requiered | cost per click              | "0.58"               |
  
 
 The response will hold the updated campaign
 + Request 
 
-    [Campaign][]
+    + Body
+
+            {
+                "name": "One more campaign",
+                "enabled": true,
+                "cpc": "0.123",
+            }
 
 + Response 200 (application/json)
 
