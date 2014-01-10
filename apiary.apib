@@ -125,11 +125,13 @@ update an existing campaign by id
 the following campaign properties can not be updated, and will be ignored if wil be included within the request body:
 
 
-| Propery       | Type               | Semantic             | Example              |
-| :------------ | :-----------------:| :-------------------:| :------------------: |
-| **id**        | Numeric, requiered | id                   | 1                    |
-| **name**      | String,  requiered | name                 | "My Campaign"        |
-| **enabled**   | boolean, requiered | is capaign ebaled    | "true"               |
+| Propery               | Type               | Semantic             | Example              |
+| :-------------------- | :-----------------:| :-------------------:| :------------------: |
+| **id**                | Numeric, requiered | id                   | 1                    |
+| **name**              | String,  requiered | name                 | "My Campaign"        |
+| **enabled**           | Boolean, requiered | is capaign ebaled    | "true"               |
+| **cpc**               | Money,   requiered | cost per click       | "0.58"               |
+| **amountSpent**       | Money,   requiered | Money spent today for `DAILY` budget, this month for `MONTHLY` budget, or from the begining of history for `CAMPAIGN` budget        | "1000.58"               |
  
  
 
