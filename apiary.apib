@@ -23,6 +23,19 @@ login to Amelia using site user credentials, using [Basic Authentication](http:/
         }
 
 
+# Group Advertisers
+
+## Advertisers collections [/advertisers] 
+### get all advertiers [GET]
+get all advertisers associated with logged in 
+
++ Response 200 (application/json)
+        {
+            advertisers: [
+               {"name": "my adv", "id": 1234}
+            ]
+        }
+
 # Group Campaigns
 Campaign related resources of the **Amplify API**
 
@@ -276,10 +289,13 @@ Reports data for **Amplify API**
           }
         }
 
-## Stat for campaign aggregated by day [/reports/campaigns/{ids}/byDay?limit=100&offset=1&sort=-ctr]
+## Stat for campaign aggregated by day [/reports/campaigns/{ids}/{groupBy}?from=12/22/2013&to=01/20/2014&limit=100&offset=1&sort=-ctr]
 ### Retrieve stats for a single Campaign aggregated by day [GET]
 + Parameters
     + id (required, number, `1`) ...  one or more Campaign `ids` using comma seperaotr
+    + groupBy (required, String, `byDay`) ... grouping `byDay` or `byMonth`
+    + from (required, date, `12/22/2013`) ...  start date MM/DD/YYY
+    + to (required, date, `01/20/2014`) ...  end date MM/DD/YYY
     + limit (optional, number, `10`) ... num of results per page. default is 10
     + offset (optional, number, `3`) ... page number to show. default is 1
     + sort (optional, String, `-ctr`) ... filed to sort by. `+filed` means ascending. `filed` means descending
@@ -324,10 +340,12 @@ Reports data for **Amplify API**
           }
         }
 
-## Stat for advertiser aggregated by day [/reports/advertisers/{ids}/byDay?limit=100&offset=1&sort=-ctr]
+## Stat for advertiser aggregated by day [/reports/advertisers/{ids}/byDay?from=12/22/2013&to=01/20/2014&limit=100&offset=1&sort=-ctr]
 ### Retrieve stats for a single Advertiser aggregated by day [GET]
 + Parameters
     + id (required, number, `1`) ...  one or more Advertisers `ids` using comma seperaotr
+    + from (required, date, `12/22/2013`) ...  start date MM/DD/YYY
+    + to (required, date, `01/20/2014`) ...  end date MM/DD/YYY
     + limit (optional, number, `10`) ... num of results per page. default is 10
     + offset (optional, number, `3`) ... page number to show. default is 1
     + sort (optional, String, `-ctr`) ... filed to sort by. `+filed` means ascending. `filed` means descending
