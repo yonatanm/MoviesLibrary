@@ -168,9 +168,14 @@ Ads related resources of the **Amplify API**
 # Group Reports
 report data
 
-## stat for ad aggregated by day [/reports/ads/{ids}/byDay]
-
+## stat for ad aggregated by day [/reports/ads/{ids}/byDay?limit=100&offset=1&sort=-ctr]
 ### Retrieve stats for a Single Ad aggregated by day [GET]
++ Parameters
+    + id (required, number, `1`) ...  one or more Ad `ids` comma seperaotr
+    + limit (optional, number, `10`) ... num of results per page. default is 10
+    + offset (optional, number, `3`) ... page number to show. default is 1
+    + sort (optional, String, `-ctr`) ... filed to sort by. `+filed` means ascending. `filed` means descending
+
 + Response 200 (application/json)
 
         {
@@ -214,6 +219,10 @@ report data
 ## stat for campaign aggregated by day [/reports/campaigns/{ids}/byDay]
 
 ### Retrieve stats for a single Campaign aggregated by day [GET]
+    + id (required, number, `1`) ...  one or more Campaign `ids` using comma seperaotr
+    + limit (optional, number, `10`) ... num of results per page. default is 10
+    + offset (optional, number, `3`) ... page number to show. default is 1
+    + sort (optional, String, `-ctr`) ... filed to sort by. `+filed` means ascending. `filed` means descending
 + Response 200 (application/json)
 
         {
@@ -256,8 +265,58 @@ report data
         }
 
 ## stat for advertiser aggregated by day [/reports/advertisers/{ids}/byDay]
-
 ### Retrieve stats for a single Advertiser aggregated by day [GET]
+    + id (required, number, `1`) ...  one or more Advertisers `ids` using comma seperaotr
+    + limit (optional, number, `10`) ... num of results per page. default is 10
+    + offset (optional, number, `3`) ... page number to show. default is 1
+    + sort (optional, String, `-ctr`) ... filed to sort by. `+filed` means ascending. `filed` means descending
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "currency-code": "USD",
+                "total-cost": "200.0",
+                "cpc": "0.1392757660167131",
+                "total-frame-clicks": "0",
+                "total-conversions": "0",
+                "total-ctr": "0.30380797",
+                "currency-symbol": "$",
+                "total-clicks": "1436",
+                "total-cpa": "0.0",
+                "currency-id": "1",
+                "total-count": "20",
+                "total-impressions": "472667",
+                "entity": [
+                    {
+                        "date": "2014-01-20",
+                        "ctr": "0.2165",
+                        "cost": "10.0",
+                        "frame-clicks": "0",
+                        "cpa": "0.0",
+                        "conversions": "0",
+                        "impressions": "31872",
+                        "clicks": "69"
+                    },
+                    {
+                        "date": "2014-01-19",
+                        "ctr": "0.3204",
+                        "cost": "10.0",
+                        "frame-clicks": "0",
+                        "cpa": "0.0",
+                        "conversions": "0",
+                        "impressions": "22782",
+                        "clicks": "73"
+                    }
+                ]
+            }
+        }        
+
+## stat for advertiser aggregated by campaign [/reports/advertisers/{ids}/byCampaign]
+### Retrieve stats for a single Advertiser aggregated by campaign [GET]
+    + id (required, number, `1`) ...  one or more Campaigns `ids` using comma seperaotr
+    + limit (optional, number, `10`) ... num of results per page. default is 10
+    + offset (optional, number, `3`) ... page number to show. default is 1
+    + sort (optional, String, `-ctr`) ... filed to sort by. `+filed` means ascending. `filed` means descending
 + Response 200 (application/json)
 
         {
@@ -286,3 +345,39 @@ report data
             }
           }
         }
+
+## top content for advertiser [/reports/advertisers/{ids}/topContent]
+### Retrieve top content for a single Advertiser  [GET]
+    + id (required, number, `1`) ...  one or more Advertisers `ids` using comma seperaotr
+    + limit (optional, number, `10`) ... num of results per page. default is 10
+    + offset (optional, number, `3`) ... page number to show. default is 1
+    + sort (optional, String, `-ctr`) ... filed to sort by. `+filed` means ascending. `filed` means descending
++ Response 200 (application/json)
+
+        [
+            {
+                "adId": 19072908,
+                "adTitle": "איך ללכוד כריש",
+                "adUrl": "http://reshet.tv/Shows/your_family_parents_meeting/video/.aspx?vml=227787",
+                "totalRow": {
+                    "clicks": 1071,
+                    "impressions": 250595,
+                    "cost": 148.6,
+                    "ctr": 0.4274,
+                    "frameClicks": 0
+                }
+            },
+            {
+                "adId": 13671698,
+                "adTitle": "מי מפחד מבת-מיצווש?",
+                "adUrl": "http://shavith.blogspot.com/2010/11/blog-post_15.html",
+                "totalRow": {
+                    "clicks": 326,
+                    "impressions": 163449,
+                    "cost": 45.84,
+                    "ctr": 0.1995,
+                    "frameClicks": 0,
+                    "conversions": 0
+                }
+            }
+        ]
