@@ -4,6 +4,26 @@ HOST: http://MoviesLibrary.com
 # Amplify your content
 Amplify API
 
+# Authentication
+In order to use Amelia service you must first autehnticate using your credentails.
+You will obtains a token.
+Theyoken should be included on all further requests as part of  `TOKEN` HTTP header
+
+## login [/login]
+### obtaining a token [GET]
+login to Amelia using site user credentials.
+   
++ Headers
+
+        Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ
+            
++ Response 200 (application/json)
+
+        {
+            "token": "XXXXXX"
+        }
+
+
 # Group Campaigns
 Campaign related resources of the **Amplify API**
 
@@ -163,12 +183,45 @@ The response will hold the updated campaign
 # Group Ads
 Ads related resources of the **Amplify API**
 
-## Ads Collection [/campaigns/{id}/ads] 
+## Ads Collection [/campaigns/{campaignId}/ads?limit=100&offset=1&sort=-id] 
+### Retrieve list of ads for campaign `campaignId` [GET]
++ Parameters
+    + id (required, number, `campaignId`) ...  Campaign `campaignId` 
+    + limit (optional, number, `10`) ... num of results per page. default is 10
+    + offset (optional, number, `3`) ... page number to show. default is 1
+    + sort (optional, String, `-id`) ... filed to sort by. `+filed` means ascending. `filed` means descending
+
++ Response 200 (application/json)
+
+        {
+            "count": 10,
+            "totalCount": 149,
+            "ads": [
+                {
+                    "id": 19072906,
+                    "title": "הילדה והים",
+                    "creationDate": "2013/10/13",
+                    "url": "http://www.haaretz.co.il/literature/youngsters/.premium-1.2133676",
+                    "source": "ספרות",
+                    "status": "Rejected",
+                    "enabled": false
+                },
+                {
+                    "id": 19072907,
+                    "title": "יומנה של לוכד כרישים",
+                    "creationDate": "2013/10/13",
+                    "url": "http://www.haaretz.co.il/literature/youngsters/.premium-1.2133676",
+                    "source": "הארץ",
+                    "status": "Approved",
+                    "enabled": true
+                }
+            ]
+        }
 
 # Group Reports
-report data
+Reports data for **Amplify API**
 
-## stat for ad aggregated by day [/reports/ads/{ids}/byDay?limit=100&offset=1&sort=-ctr]
+## Stat for Ad aggregated by day [/reports/ads/{ids}/byDay?limit=100&offset=1&sort=-ctr]
 ### Retrieve stats for a Single Ad aggregated by day [GET]
 + Parameters
     + id (required, number, `1`) ...  one or more Ad `ids` comma seperaotr
@@ -216,9 +269,9 @@ report data
           }
         }
 
-## stat for campaign aggregated by day [/reports/campaigns/{ids}/byDay]
-
+## Stat for campaign aggregated by day [/reports/campaigns/{ids}/byDay?limit=100&offset=1&sort=-ctr]
 ### Retrieve stats for a single Campaign aggregated by day [GET]
++ Parameters
     + id (required, number, `1`) ...  one or more Campaign `ids` using comma seperaotr
     + limit (optional, number, `10`) ... num of results per page. default is 10
     + offset (optional, number, `3`) ... page number to show. default is 1
@@ -264,8 +317,9 @@ report data
           }
         }
 
-## stat for advertiser aggregated by day [/reports/advertisers/{ids}/byDay]
+## Stat for advertiser aggregated by day [/reports/advertisers/{ids}/byDay?limit=100&offset=1&sort=-ctr]
 ### Retrieve stats for a single Advertiser aggregated by day [GET]
++ Parameters
     + id (required, number, `1`) ...  one or more Advertisers `ids` using comma seperaotr
     + limit (optional, number, `10`) ... num of results per page. default is 10
     + offset (optional, number, `3`) ... page number to show. default is 1
@@ -311,8 +365,9 @@ report data
             }
         }        
 
-## stat for advertiser aggregated by campaign [/reports/advertisers/{ids}/byCampaign]
+## Stat for advertiser aggregated by campaign [/reports/advertisers/{ids}/byCampaign?limit=100&offset=1&sort=-ctr]
 ### Retrieve stats for a single Advertiser aggregated by campaign [GET]
++ Parameters
     + id (required, number, `1`) ...  one or more Campaigns `ids` using comma seperaotr
     + limit (optional, number, `10`) ... num of results per page. default is 10
     + offset (optional, number, `3`) ... page number to show. default is 1
@@ -346,9 +401,47 @@ report data
           }
         }
 
-## top content for advertiser [/reports/advertisers/{ids}/topContent]
+## Top content for advertiser [/reports/advertisers/{ids}/topContent?limit=100&offset=1&sort=-ctr]
 ### Retrieve top content for a single Advertiser  [GET]
++ Parameters
     + id (required, number, `1`) ...  one or more Advertisers `ids` using comma seperaotr
+    + limit (optional, number, `10`) ... num of results per page. default is 10
+    + offset (optional, number, `3`) ... page number to show. default is 1
+    + sort (optional, String, `-ctr`) ... filed to sort by. `+filed` means ascending. `filed` means descending
++ Response 200 (application/json)
+
+        [
+            {
+                "adId": 19072908,
+                "adTitle": "איך ללכוד כריש",
+                "adUrl": "http://reshet.tv/Shows/your_family_parents_meeting/video/.aspx?vml=227787",
+                "totalRow": {
+                    "clicks": 1071,
+                    "impressions": 250595,
+                    "cost": 148.6,
+                    "ctr": 0.4274,
+                    "frameClicks": 0
+                }
+            },
+            {
+                "adId": 13671698,
+                "adTitle": "מי מפחד מבת-מיצווש?",
+                "adUrl": "http://shavith.blogspot.com/2010/11/blog-post_15.html",
+                "totalRow": {
+                    "clicks": 326,
+                    "impressions": 163449,
+                    "cost": 45.84,
+                    "ctr": 0.1995,
+                    "frameClicks": 0,
+                    "conversions": 0
+                }
+            }
+        ]
+
+## Top content for campaign [/reports/campaign/{ids}/topContent?limit=100&offset=1&sort=-ctr]
+### Retrieve top content for a single Campaign  [GET]
++ Parameters
+    + id (required, number, `1`) ...  one or more Campaign `ids` using comma seperaotr
     + limit (optional, number, `10`) ... num of results per page. default is 10
     + offset (optional, number, `3`) ... page number to show. default is 1
     + sort (optional, String, `-ctr`) ... filed to sort by. `+filed` means ascending. `filed` means descending
