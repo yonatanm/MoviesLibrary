@@ -220,10 +220,20 @@ Ads related resources of the **Amplify API**
 # Group Reports
 Reports data for **Amplify API**
 
-## Stat for Ad aggregated by day [/reports/ads/{ids}/byDay?limit=100&offset=1&sort=-ctr]
+## Stat for Ad aggregated by day [/reports/ads/{ids}/byDay?from=12/22/2013&to=01/20/2014&limit=100&offset=1&sort=-ctr]
 ### Retrieve stats for a Single Ad aggregated by day [GET]
+
+| Propery               | Type               | Semantic                           | Example              |
+| :-------------------- | :-----------------:| :---------------------------------:| :------------------: |
+| **currency-code**     | String             | 3 letters standard country code    | "ILS"                |
+| **total-cost**        | Double             | total amound of money spend        | "1234.5"             |
+| **totla-ctr**         | Double             | average CTR                        | "0.55"               |
+
+
 + Parameters
     + id (required, number, `1`) ...  one or more Ad `ids` comma seperaotr
+    + from (required, date, `12/22/2013`) ...  start date MM/DD/YYY
+    + to (required, date, `01/20/2014`) ...  end date MM/DD/YYY
     + limit (optional, number, `10`) ... num of results per page. default is 10
     + offset (optional, number, `3`) ... page number to show. default is 1
     + sort (optional, String, `-ctr`) ... filed to sort by. `+filed` means ascending. `filed` means descending
@@ -234,8 +244,6 @@ Reports data for **Amplify API**
           "results": {
             "currency-code": "USD",
             "total-cost": "148.6",
-            "total-frame-clicks": "0",
-            "total-conversions": "0",
             "total-ctr": "0.42738283",
             "currency-symbol": "$",
             "total-clicks": "1071",
