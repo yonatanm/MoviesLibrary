@@ -254,3 +254,35 @@ report data
             ]
           }
         }
+
+## stat for advertiser aggregated by day [/reports/advertisers/{ids}/byDay]
+
+### Retrieve stats for a single Advertiser aggregated by day [GET]
++ Response 200 (application/json)
+
+        {
+          "results": {
+            "currency-code": "USD",
+            "total-cost": "200.0",
+            "cpc": "0.1392757660167131",
+            "total-frame-clicks": "0",
+            "total-conversions": "0",
+            "total-ctr": "0.30380797",
+            "currency-symbol": "$",
+            "total-clicks": "1436",
+            "total-cpa": "0.0",
+            "total-count": "1",
+            "total-impressions": "472667",
+            "entity": {
+              "name": "Selfserve_Outbrain_yonatanmaman",
+              "id": "3256",
+              "ctr": "0.3038",
+              "cost": "200.0",
+              "frame-clicks": "0",
+              "cpa": "0.0",
+              "conversions": "0",
+              "impressions": "472667",
+              "clicks": "1436"
+            }
+          }
+        }
