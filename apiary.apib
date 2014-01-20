@@ -165,3 +165,92 @@ Ads related resources of the **Amplify API**
 
 ## Ads Collection [/campaigns/{id}/ads] 
 
+# Group Reports
+report data
+
+## stat for ad aggregated by day [/reports/ads/{ids}/byDay]
+
+### Retrieve stats for a Single Ad aggregated by day [GET]
++ Response 200 (application/json)
+
+        {
+          "results": {
+            "currency-code": "USD",
+            "total-cost": "148.6",
+            "total-frame-clicks": "0",
+            "total-conversions": "0",
+            "total-ctr": "0.42738283",
+            "currency-symbol": "$",
+            "total-clicks": "1071",
+            "total-cpa": "0.0",
+            "currency-id": "1",
+            "total-count": "20",
+            "total-impressions": "250595",            
+            "entity": [
+              {
+                "date": "2014-01-20",
+                "ctr": "0.2407",
+                "cost": "6.32",
+                "frame-clicks": "0",
+                "cpa": "0.0",
+                "conversions": "0",
+                "impressions": "18277",
+                "clicks": "44"
+              },
+              {
+                "date": "2014-01-19",
+                "ctr": "0.42",
+                "cost": "7.44",
+                "frame-clicks": "0",
+                "cpa": "0.0",
+                "conversions": "0",
+                "impressions": "13094",
+                "clicks": "55"
+              },
+            ]
+          }
+        }
+
+## stat for campaign aggregated by day [/reports/campaigns/{ids}/byDay]
+
+### Retrieve stats for a single Campaign aggregated by day [GET]
++ Response 200 (application/json)
+
+        {
+          "results": {
+            "currency-code": "USD",
+            "total-cost": "200.0",
+            "cpc": "0.1392757660167131",
+            "total-frame-clicks": "0",
+            "total-conversions": "0",
+            "total-ctr": "0.30380797",
+            "currency-symbol": "$",
+            "total-clicks": "1436",
+            "total-cpa": "0.0",
+            "currency-id": "1",
+            "total-count": "20",
+            "total-impressions": "472667",
+            "entity": [
+              {
+                "date": "2014-01-20",
+                "ctr": "0.2165",
+                "cost": "10.0",
+                "frame-clicks": "0",
+                "cpa": "0.0",
+                "conversions": "0",
+                "impressions": "31872",
+                "clicks": "69"
+              },
+              {
+                "date": "2014-01-19",
+                "ctr": "0.3204",
+                "cost": "10.0",
+                "frame-clicks": "0",
+                "cpa": "0.0",
+                "conversions": "0",
+                "impressions": "22782",
+                "clicks": "73"
+              }
+            ]
+          }
+        }
