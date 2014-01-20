@@ -4,15 +4,14 @@ HOST: http://MoviesLibrary.com
 # Amplify your content
 Amplify API
 
-# Authentication
+# Group Authentications
 In order to use Amelia service you must first autehnticate using your credentails.
 You will obtains a token.
-Theyoken should be included on all further requests as part of  `TOKEN` HTTP header
-
+The token should be included on all further requests as part of `TOKEN` HTTP header
 ## login [/login]
 ### obtaining a token [GET]
-login to Amelia using site user credentials.
-   
+login to Amelia using site user credentials, using [Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication)
+
 + Headers
 
         Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ
